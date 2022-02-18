@@ -234,7 +234,7 @@ func init() {
 			case reflect.Int:
 				x, err := strconv.ParseInt(j, 10, 64)
 				if err != nil {
-					panic(fmt.Sprintf("file: csv/DanceAbilityLevelConfig.go struct DanceAbilityLevelConfig line:%d field:%d convert %v", idx, i, err))
+					panic(fmt.Sprintf("file: {{$.FN}} struct {{$x.ValVarName}} line:%d field:%d convert %v", idx, i, err))
 				}
 				f.SetInt(x)
 			case reflect.String:
@@ -243,7 +243,7 @@ func init() {
 			case reflect.Float64, reflect.Float32:
 				x, err := strconv.ParseFloat(j, 64)
 				if err != nil {
-					panic(fmt.Sprintf("file: csv/DanceAbilityLevelConfig.go struct DanceAbilityLevelConfig line:%d field:%d convert %v", idx, i, err))
+					panic(fmt.Sprintf("file: {{$.FN}} struct {{$x.ValVarName}} line:%d field:%d convert %v", idx, i, err))
 				}
 				f.SetFloat(x)
 			}
@@ -254,7 +254,7 @@ func init() {
         } else {
            key, err := strconv.ParseInt(v[0], 10, 64)
            if err != nil {
-               panic(fmt.Sprintf("file: csv/DanceBaseConfig.go struct: DanceBaseConfig line:%d convert key %v", idx, err))
+               panic(fmt.Sprintf("file: {{$.FN}} struct: {{$x.ValVarName}} line:%d convert key %v", idx, err))
            }
            tv.SetMapIndex(reflect.ValueOf(key), reflect.ValueOf(nv))
         }
