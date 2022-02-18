@@ -238,7 +238,7 @@ func init() {
 				}
 				f.SetInt(x)
 			case reflect.String:
-				f.SetString(j)
+				f.SetString(j[1 : len(j)-1])
 
 			case reflect.Float64, reflect.Float32:
 				x, err := strconv.ParseFloat(j, 64)
@@ -250,7 +250,7 @@ func init() {
 		}
 
 		if strings.HasPrefix(v[0], "` + "`" + `") {
-           tv.SetMapIndex(reflect.ValueOf(v[0]), reflect.ValueOf(nv))
+           tv.SetMapIndex(reflect.ValueOf(v[0][1:len(v[0])-1]), reflect.ValueOf(nv))
         } else {
            key, err := strconv.ParseInt(v[0], 10, 64)
            if err != nil {
